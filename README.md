@@ -20,7 +20,7 @@ Exercise 5:
   Note: Are files inherently ordered?
 
 Exercise 6:
-  mkdir /tmp/holberton
+  mkdir /tmp/my_first_directory
   Create a holberton directory inside the tmp directory
 
 Exercise 7:
