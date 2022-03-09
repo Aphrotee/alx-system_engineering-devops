@@ -1,0 +1,2 @@
+#!/bin/bash
+echo list | tr " " "\n" | uniq | sort | tr " " "\n"
