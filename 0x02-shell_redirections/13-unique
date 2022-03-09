@@ -1,2 +1,2 @@
 #!/bin/bash
-echo list | tr " " "\n" | uniq | sort | tr " " "\n"
+cat list | tr " " "\n" | uniq -u | sort | tr " " "\n"
