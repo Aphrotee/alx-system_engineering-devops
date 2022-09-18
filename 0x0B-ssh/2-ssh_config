@@ -1,10 +1,7 @@
-
-# Philip's configuration file for ubuntu ssh server.
-# For more details, see ssh_config(5) man page.
-
+# Config file to bypass passowrd
 Host *
     PasswordAuthentication no
-    IdentityFile ~/.ssh/holberton
+    IdentityFile ~/.ssh/school
     SendEnv LANG LC_*
     HashKnownHosts yes
     GSSAPIAuthentication yes
