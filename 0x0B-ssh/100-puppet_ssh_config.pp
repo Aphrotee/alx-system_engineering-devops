@@ -1,4 +1,5 @@
 # Creates an ssh config file to bypass passphrase
+#!/use/bin/env bash
 file { '~/.ssh/config':
   ensure  => present,
   path    => '~/.ssh/config',
