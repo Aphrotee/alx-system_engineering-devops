@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Installs and configures HAProxy
+sudo apt-get install --no-install-recommends software-properties-common
+sudo add-apt-repository ppa:vbernat/haproxy-2.0
+sudo apt-get -y install haproxy=2.0.\*
+sudo sed -i '/ENABLED=0/d' /etc/default/haproxy
+sudo sed -i -e '$aENABLED=1' /etc/defaut/haproxy
+sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.orig
+sudo sed -i '/no-tls-ticketn/d' /etc/haproxy/haproxy.cfg
+sudo sed -i -e '$a\\nfrontend http' /etc/haproxy/haproxy.cfg
+sudo sed -i -e '$a\\tbind 0.0.0.0:80' /etc/haproxy/haproxy.cfg
+sudo sed -i -e '$a\\tmode http' /etc/haproxy/haproxy.cfg
+sudo sed -i -e '$a\\tdefault_backend my_servers' /etc/haproxy/haproxy.cfg
+sudo sed -i -e '$a\\toption httpclose' /etc/haproxy/haproxy.cfg
+sudo sed -i -e '$a\\toption forwardfor' /etc/haproxy/haproxy.cfg
+sudo sed -i -e '$a\\nbackend my_servers' /etc/haproxy/haproxy.cfg
+sudo sed -i -e '$a\\tbalance roundrobin' /etc/haproxy/haproxy.cfg
+sudo sed -i -e '$a\\tserver 9401-web-01 34.239.151.121:80 check' /etc/haproxy/haproxy.cfg
+sudo sed -i -e '$a\\tserver 9401-web-02 3.239.91.139:80 check' /etc/haproxy/haproxy.cfg
+sudo service haproxy start
