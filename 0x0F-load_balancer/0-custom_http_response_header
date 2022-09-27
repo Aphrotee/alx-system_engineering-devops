@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Configure Nginx so that its HTTP response contains a custom header
+# shellcheck disable=SC2154
+sudo apt-get update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+sudo apt-get -y install curl
+sudo service nginx start
+host=$(head -1 /etc/hosts | tr " " "\n" | tail +3)
+sudo sed -i "/tcp_nopush on;$/a \        add_header X-Served-By $host;" /etc/nginx/nginx.conf
+sudo nginx -t
+sudo service nginx restart
