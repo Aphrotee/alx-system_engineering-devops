@@ -8,5 +8,6 @@ sudo apt-get -y install curl
 sudo service nginx start
 host=$(head -1 /etc/hosts | tr " " "\n" | tail +3)
 sudo sed -i "/tcp_nopush on;$/a \        add_header X-Served-By $host;" /etc/nginx/nginx.conf
+sudo sed -i "/tcp_nopush on;$/a \        add_header connection keep-alive;" /etc/nginx/nginx.conf
 sudo nginx -t
 sudo service nginx restart
