@@ -5,9 +5,9 @@ This is a script that exports api data to CSV file
 """
 
 
+import csv
 import requests
 import sys
-import csv
 
 
 def gather_data_and_export_2_csv(userId):
