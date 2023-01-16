@@ -26,7 +26,7 @@ def gather_data_and_export_2_csv(userId):
     employee_name = ""
     for user in user_api:
         if (user.get('id') == userId):
-            employee_name = user.get('name')
+            employee_name = user.get('username')
     for task in todo_api:
         if task.get('userId') == userId:
             n_tasks += 1
@@ -38,7 +38,7 @@ def gather_data_and_export_2_csv(userId):
                   n_tasks, '\n\t '.join(tasks_titles)))"""
     csv_filename = str(userId) + '.csv'
     csv_file = open(csv_filename, 'w+')
-    csv_writer = csv.writer(csv_file)
+    csv_writer = csv.writer(csv_file, quoting=QUOTE_ALL)
     for emp in todo_api:
         if emp.get('userId') == userId:
             csv_writer.writerow([str(userId),
